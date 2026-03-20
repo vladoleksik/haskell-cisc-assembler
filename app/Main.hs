@@ -1,7 +1,6 @@
 module Main where
 
 import Options.Applicative
-import Data.Semigroup ((<>))
 import qualified Assembler
 import qualified FileWriter
 import qualified Data.Map as Map
@@ -62,12 +61,11 @@ runWithOpts opts = do
                         then rawCode
                         else Assembler.bigEndian rawCode
 
-      -- 5. Final Output
-      --putStrLn "Machine Code (hex):"
-      --mapM_ (putStrLn . formatHex) machineCode
-      
-      FileWriter.writeBinaryFile (outputFile opts) machineCode
-      putStrLn $ "Assembled to " ++ outputFile opts
+      if length machineCode == 0
+        then putStrLn "Errors found. No machine code generated."
+        else do
+          FileWriter.writeBinaryFile (outputFile opts) machineCode
+          putStrLn $ "Assembled to " ++ outputFile opts
 
 formatHex :: (Integral a, Show a) => a -> String
 formatHex x = let h = showHex x "" in replicate (4 - length h) '0' ++ h
