@@ -1,7 +1,6 @@
 module Parser.FirstPass where
 
 import qualified Data.Map as Map
-import Data.Word (Word16)
 import ISA.Instructions
 import Parser.SymbolTable
 import Parser.Lines

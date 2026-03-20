@@ -1,31 +1,15 @@
-module Assembler (someFunc, parseFile, buildSymbolTable, buildInstructions, buildMachineCode, bigEndian) where
+module Assembler (parseFile, buildSymbolTable, buildInstructions, buildMachineCode, bigEndian) where
 
-import Numeric (showHex)
 import Text.Megaparsec
-import Data.Maybe (mapMaybe)
 import Data.Word (Word16)
 import Data.Bits
 
 import ISA.Instructions
-import ISA.InstrClasses.B1
-import ISA.InstrClasses.B2
-import ISA.InstrClasses.B3
-import ISA.InstrClasses.B4
-import ISA.LabelOffsets
-import ISA.Operands
-import ISA.Registers
 import Parser.SymbolTable
 import Parser.Lines
 import Parser.Parser
 import Parser.FirstPass
 import Parser.SecondPass
-
-someFunc :: IO ()
---someFunc = putStrLn $ show $ b1InstrToBits $ B1Instruction MOV (Direct R4) (Immediate 2)
---someFunc = putStrLn $ show $ instructionToBits $ B1Instr $ B1Instruction AND (Indexed R0 15) (Indexed R14 1)
--- show each element of the list as a 4-digit hexadecimal number
-someFunc = putStrLn $ unwords $ map (\x -> let h = showHex x "" in replicate (4 - length h) '0' ++ h) $ instructionToBits $ B1Instr $ B1Instruction AND (Indexed R0 15) (Indexed R14 1)
-
 
 parseFile :: FilePath -> IO [Line]
 parseFile path = do

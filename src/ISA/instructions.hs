@@ -1,6 +1,5 @@
 module ISA.Instructions where
 
-import Data.Bits
 import Data.Word (Word16)
 
 import ISA.InstrClasses.B1
@@ -8,7 +7,6 @@ import ISA.InstrClasses.B2
 import ISA.InstrClasses.B3
 import ISA.InstrClasses.B4
 import ISA.Operands
-import ISA.Registers
 
 data Instruction = 
     B1Instr B1Instruction
