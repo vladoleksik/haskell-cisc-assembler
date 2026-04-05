@@ -1,4 +1,7 @@
-MOV R2, 2
-SUB R1, R2
-NOP
+MOV 2(R2), 3
+BR after
+HALT
+after: PUSH 2(R2)
+POP R5
+SUB R1, 2(R2)
 HALT

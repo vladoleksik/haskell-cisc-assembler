@@ -9,7 +9,7 @@ data B2Instruction = B2Instruction B2Opcode Operand
   deriving (Show, Eq)
 
 b2InstrToBits :: B2Instruction -> Word16
-b2InstrToBits (B2Instruction opcode operand) = (fromIntegral (operandFieldToBits operand) .&. 0x3F) .|. ((fromIntegral . b2OpcodeToBits) opcode `shiftL` 6) .|. (0b1 `shiftL` 15) -- convert to bits and or with 0b1<<15 for the class
+b2InstrToBits (B2Instruction opcode operand) = (fromIntegral (operandFieldToBits operand) .&. 0x3F) .|. ((fromIntegral . b2OpcodeToBits) opcode `shiftL` 8) .|. (0b1 `shiftL` 15) -- convert to bits and or with 0b1<<15 for the class
 
 data B2Opcode = 
     CLR
