@@ -32,7 +32,26 @@ data B4Opcode =
     deriving (Show, Eq, Enum)
 
 b4OpcodeToBits :: B4Opcode -> Int
-b4OpcodeToBits = fromEnum
+b4OpcodeToBits op = case op of
+    CLC -> 0x00F7
+    CLV -> 0x00FE
+    CLZ -> 0x00FB
+    CLS -> 0x00FD
+    CCC -> 0x00F0
+    SEC -> 0x0108
+    SEV -> 0x0101
+    SEZ -> 0x0104
+    SES -> 0x0102
+    SCC -> 0x010F
+    NOP -> 0x0200
+    RET -> 0x0A00
+    RETI -> 0x0C00
+    HALT -> 0x0300
+    WAIT -> 0x0B00
+    PUSH_PC -> 0x0600
+    POP_PC -> 0x0700
+    PUSH_FLAG -> 0x0800
+    POP_FLAG -> 0x0900
 
 b4OpcodeFromString :: String -> Maybe B4Opcode
 b4OpcodeFromString str = case str of
