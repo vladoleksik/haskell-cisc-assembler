@@ -1,0 +1,4 @@
+MOV R2, 2
+SUB R1, R2
+NOP
+HALT
