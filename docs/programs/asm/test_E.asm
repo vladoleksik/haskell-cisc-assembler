@@ -1,0 +1,26 @@
+BR et0 #Tests PUSH_FLAG, POP_FLAG, PUSH_PC, flags, branches
+MOV R2, 2
+et0: CMP R0, 0
+CLZ
+BNE et1
+HALT
+et1: MOV R1, 1
+MOV R3, 2
+CMP R2, 2
+BEQ et2
+JMP R3
+et2: MOV R4, 7
+PUSH_PC
+CMP R4, 7
+PUSH_FLAG
+CMP R4, 5
+POP_FLAG
+BNE et4
+POP R5
+et4: HALT
+
+
+
+
+
+

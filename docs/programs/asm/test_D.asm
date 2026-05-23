@@ -1,0 +1,31 @@
+MOV R0, 0x100 #Tests ALU ops, flags, branches. R0-R2 & R4-R5 should be set.
+INC 1(R0)
+INC R0
+CMP (R0), 0
+BNE et1
+HALT
+et1: OR R1, 7
+RRC R1
+BCS et2
+HALT
+et2: MOV R2, R1
+XOR R2, 7
+NEG R2
+BMI et3
+HALT
+et3: MOV R3, 2
+CLR R3
+CMP R3, 0
+BPL et4
+HALT
+et4: MOV R4, 0x7FFF
+AND R4, 0xFFFE
+ADD R4, 5
+BVS et5
+HALT
+et5: MOV R5, 5
+ROR R5
+HALT
+
+
+

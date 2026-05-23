@@ -112,3 +112,5 @@ bench.html
 
 # ignore the downloaded binary files
 scripts/release/binary-downloads/
+
+!/docs/programs/bin/*.bin
